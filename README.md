@@ -1,12 +1,8 @@
 # **LINUX FSTAB Y CRONTAB**
 ## **<span style="color:#68BCFF;">INDICE</span>**
-* **[1. Configurar Tarjeta de red Estatica](#1-configurar-tarjeta-de-red-estatica)**  
-* **[2. Instalar y Configurar Servidor Dns](#2-instalar-y-configurar-servidor-dns)**
-    * **[2.1. Instalar Servidor Dns](#21-instalar-servidor-dns)**
-    * **[2.2. Configurar Servidor Dns](#22-configurar-servidor-dns)**
-* **[3. Instalar y Configurar Apache2](#3-instalar-y-configurar-apache2)**
-    * **[3.1 Acceso con usuario y contraseña a las paginas escherichiacoli.es y chip555.org](#31-acceso-con-usuario-y-contraseña-a-las-paginas-escherichiacolies-y-chip555org)**
-* **[4. Prueba del correcto funcionamiento](#4-prueba-del-correcto-funcionamiento)**
+* **[1.1 Crear particiones al primer disco duro](#11-crear-particiones-al-primer-disco-duro)**  
+* **[1.2 Crear particiones al segundo disco duro](#12-crear-particiones-al-segundo-disco-duro)**
+* **[2 Crear montaje de los discos duros](#2-crear-montaje-de-los-discos-duros)**
 
 ### **1.1 Crear particiones al primer disco duro**
   1. Comprobamos los discos que tenemos conectados con el siguiente comando:  
