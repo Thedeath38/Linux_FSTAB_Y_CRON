@@ -1,13 +1,14 @@
 # **LINUX FSTAB Y CRONTAB**
 ## **<span style="color:#68BCFF;">INDICE</span>**
-* **[1.1 Crear particiones al primer disco duro](#11-crear-particiones-al-primer-disco-duro)**  
-* **[1.2 Crear particiones al segundo disco duro](#12-crear-particiones-al-segundo-disco-duro)**
-* **[2 Crear montaje de los discos duros](#2-crear-montaje-de-los-discos-duros)**
-
+* **[1. FSTAB](#1-fstab)**
+    * **[1.1 Crear particiones al primer disco duro](#11-crear-particiones-al-primer-disco-duro)**  
+    * **[1.2 Crear particiones al segundo disco duro](#12-crear-particiones-al-segundo-disco-duro)**
+    * **[2 Crear montaje de los discos duros](#2-crear-montaje-de-los-discos-duros)**
+* **[2. CRONTAB](#1-fstab)**
+## **1. FSTAB**
 ### **1.1 Crear particiones al primer disco duro**
   1. Comprobamos los discos que tenemos conectados con el siguiente comando:  
     `sudo fdisk -l`  
-    ejemplo
       ~~~
       The partition table has been altered.
       Calling ioctl() to re-read partition table.
@@ -195,3 +196,47 @@
 
   3. Para montar manualmente usaremos el siguiente comando `sudo mount /dev/sdb1 /media/sdb1` y para la segunda particion `sudo mount /dev/sdb1 /media/sdb2`.
   4. Para ver donde estan montados o la uuid de las particiones y si estan montadas o no con el siguiente comando `sudo blkid -o list`.
+
+## **2. CRONTAB**
+  Accedemos la fichero mediante este comando  
+  `sudo nano /etc/crontab`
+  * Parametros del crontab
+      * `m`: Minutos del 0 a 59
+      * `h`: Horas del 0 a 23
+      * `dom`: Día del mes del 1 a 31
+      * `mon`: Mes del 1 a 12
+      * `dow`: Día de la semana del 0 a 6, siendo 0 el domingo.  
+        Si se deja un asterisco, quiere decir "cada" minuto, hora, día de mes, mes o día de la semana.
+      * `user`: El usuario root ejecuta este comando.
+      * `command`: Instrucciones a realizar al activarse
+      * Una vez editado el fichero lo reiniciaremos con `sudo /etc/init.d/cron restart` o `sudo /etc/init.d/cron reload`
+  - Cada hora en punto ejecutamos la sincronización horaria y mandamos la salida a /dev/null/  
+      Instalamos ntp `sudo apt-get install ntp`  
+      `00 *    * * *   root    ntpdate -u hora.rediris.es >> /dev/null`  
+
+  - Programar un trabajo (A) para ejecutarse en el minuto 30 de cada hora de cada día.  
+    `30 *    * * *   root    echo "A" >> /etc/trabajo ; date +%H:%M >> /etc/trabajo`  
+
+  - Programar un trabajo (B) para ejecutarse cada día a las 20:30h.  
+    `30 20  * * *   root    echo "B" >> /etc/trabajo ; date +%H:%M >> /etc/trabajo`  
+
+  - Programar un trabajo (C) para ejecutarse de lunes a viernes a las 20:30h.  
+    `30 20   * * 1,2,3,4,5   root    echo "C" >> /etc/trabajo ; date +%H:%M >> /etc/trabajo`  
+
+  - Programar un trabajo (D) para ejecutarse los martes y los jueves a las 20:30h.  
+    `30 20   * * 2,4   root    echo "D" >> /etc/trabajo ; date +%H:%M >> /etc/trabajo`  
+
+  - Programar un trabajo (E) para ejecutarse los días 10 y 20 de todos los meses a las 20:30h.  
+    `30 20   10,20 * *   root    echo "E" >> /etc/trabajo ; date +%H:%M >> /etc/trabajo`  
+
+  - Programar un trabajo (F) para ejecutarse cada 15 minutos.  
+    `00,15,30,45 *   * * *   root    echo "F" >> /etc/trabajo ; date +%H:%M >> /etc/trabajo`  
+
+  - Programar un trabajo (G) para ejecutarse cada día a las 00:00h.  
+    `00 00   * * *   root    echo "G" >> /etc/trabajo ; date +%H:%M >> /etc/trabajo`  
+
+  - Programar un trabajo (H) para ejecutarse cada primer día de mes a las 00:00h.   
+    `00 00   1 * *   root    echo "H" >> /etc/trabajo ; date +%H:%M >> /etc/trabajo`  
+
+El trabajo que se debe ejecutar es:  
+Añadir al fichero /etc/trabajos (no existe hay que crearlo) el código del trabajo y la hora de ejecución.
