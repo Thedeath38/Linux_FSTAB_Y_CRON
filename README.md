@@ -4,7 +4,7 @@
     * **[1.1 Crear particiones al primer disco duro](#11-crear-particiones-al-primer-disco-duro)**  
     * **[1.2 Crear particiones al segundo disco duro](#12-crear-particiones-al-segundo-disco-duro)**
     * **[2 Crear montaje de los discos duros](#2-crear-montaje-de-los-discos-duros)**
-* **[2. CRONTAB](#1-fstab)**
+* **[2. CRONTAB](#2-crontab)**
 ## **1. FSTAB**
 ### **1.1 Crear particiones al primer disco duro**
   1. Comprobamos los discos que tenemos conectados con el siguiente comando:  
