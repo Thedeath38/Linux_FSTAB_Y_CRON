@@ -10,10 +10,6 @@
   1. Comprobamos los discos que tenemos conectados con el siguiente comando:  
     `sudo fdisk -l`  
       ~~~
-      The partition table has been altered.
-      Calling ioctl() to re-read partition table.
-      Syncing disks.
-
       administrador@ubuntu:~$ sudo fdisk -l
       Disk /dev/sda: 8 GiB, 8589934592 bytes, 16777216 sectors
       Units: sectors of 1 * 512 = 512 bytes
@@ -70,6 +66,7 @@
       4. Pulsamos `intro` para que coja lo que queda deL disco
   6. Ahora vamos ha cambiar el tipo de la 2 particion a FAT32 para ello pulsamos `t`
       1. Seleccionamos la particion 2 pulsando la tecla `2`
+      * Por defecto el tipo de particion es linux por eso no modificamos el primero
       * podemos mostrar todos los tipos de particiones que hay con la tecla `L`
           ~~~
           0  Vacía           24  DOS de NEC      81  Minix / Linux a bf  Solaris
@@ -99,7 +96,7 @@
           1e  FAT16 de W95 (L 80  Minix antiguo   be  arranque de Sol ff  BBT
           ~~~
       2. En el caso de escoger fat32 introducimos `b`
-  7. Nos salimos escribiendo los datos introduciendo la `w`
+  7. Nos salimos guardamos y escribimos los datos introduciendo la `w`
   8. Para completar el formato de la primera particion introducimos:  
     `sudo mkfs.ext4 /dev/sdb1`
   9. Para completar el formato de la segunda particion introducimos:   
@@ -137,7 +134,7 @@
       * podemos mostrar todos los tipos de particiones que hay con la tecla `L`
 
       2. En el caso de escoger fat32 introducimos `b`
-  9. Nos salimos escribiendo los datos introduciendo la `w`
+  9. Nos salimos guardamos y escribimos los datos introduciendo la `w`
   10. Para completar el formato de la primera particion introducimos:  
     `sudo mkfs.ext4 /dev/sdc1`
   11. Para completar el formato de la segunda particion introducimos:   
