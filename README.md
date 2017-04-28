@@ -191,7 +191,7 @@
       - [more](https://wiki.archlinux.org/index.php/Fstab_(Espa%C3%B1ol))
   2. Para montar automaticamente las particiones podemos reiniciar `sudo reboot` o con este comando `sudo mount -a`.
 
-  3. Para montar manualmente usaremos el siguiente comando `sudo mount /dev/sdb1 /media/sdb1` y para la segunda particion `sudo mount /dev/sdb1 /media/sdb2`.
+  3. Para montar manualmente usaremos el siguiente comando `sudo mount /dev/sdb1 /media/sdb1` y para la segunda particion `sudo mount /dev/sdb2 /media/sdb2` Crear Las carpetas donde deseais montarlos con `mkdir`.
   4. Para ver donde estan montados o la uuid de las particiones y si estan montadas o no con el siguiente comando  
   `sudo blkid -o list`.
 
